@@ -1,0 +1,27 @@
+from stats import get_num_words
+from stats import character_counter
+from stats import sort_character_counter
+def main():
+    book_path = "books/frankenstein.txt"
+    text = get_book_text(book_path)
+    word_count = get_num_words(text)
+    character_count = character_counter(text)
+    character_counter_sorted = sort_character_counter(character_count)
+    cc_message = ""
+    for i in range(0, len(character_count)):
+        cc_message += f"{character_count[i]}"
+
+    print (f"""============ BOOKBOT ===========
+Analyzing book found at {book_path}...
+----------- Word Count ----------
+Found {word_count} total words
+--------- Character Count -------
+{cc_message}
+============= END ===============""")
+
+
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
+
+main()
